@@ -6,11 +6,9 @@ namespace IPB_Końcowy.Models
     public partial class Personalizedoffer
     {
         public int Id { get; set; }
-        public int UserPersonId { get; set; }
-        public int FlightId { get; set; }
-        public decimal Price { get; set; }
+        public int? UserPersonId { get; set; }
+        public decimal? Price { get; set; }
 
-        public virtual Flight Flight { get; set; }
         public virtual User UserPerson { get; set; }
     }
 }
