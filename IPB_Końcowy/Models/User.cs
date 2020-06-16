@@ -14,7 +14,7 @@ namespace IPB_Końcowy.Models
         }
 
         public int PersonId { get; set; }
-        public decimal PaidSoFar { get; set; }
+        public decimal? PaidSoFar { get; set; }
         public string CreditCardNumber { get; set; }
         public DateTime? Birthdate { get; set; }
         public string SpacesuitSize { get; set; }

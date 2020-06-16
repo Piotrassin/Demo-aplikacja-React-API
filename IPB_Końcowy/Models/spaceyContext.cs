@@ -117,13 +117,11 @@ namespace IPB_Końcowy.Models
                 entity.HasOne(d => d.ArrBody)
                     .WithMany(p => p.FlightArrBody)
                     .HasForeignKey(d => d.ArrBodyId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Flight_DepBody_Id");
 
                 entity.HasOne(d => d.DepBody)
                     .WithMany(p => p.FlightDepBody)
                     .HasForeignKey(d => d.DepBodyId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Flight_ArrBody_Id");
             });
 
@@ -185,17 +183,10 @@ namespace IPB_Końcowy.Models
             {
                 entity.ToTable("personalizedoffer");
 
-                entity.HasIndex(e => e.FlightId)
-                    .HasName("PersonalizedOffer_Flight");
-
                 entity.HasIndex(e => e.UserPersonId)
                     .HasName("PersonalizedOffer_User");
 
                 entity.Property(e => e.Id).HasColumnType("int(11)");
-
-                entity.Property(e => e.FlightId)
-                    .HasColumnName("Flight_Id")
-                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Price).HasColumnType("decimal(8,2)");
 
@@ -203,16 +194,9 @@ namespace IPB_Końcowy.Models
                     .HasColumnName("User_Person_Id")
                     .HasColumnType("int(11)");
 
-                entity.HasOne(d => d.Flight)
-                    .WithMany(p => p.Personalizedoffer)
-                    .HasForeignKey(d => d.FlightId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("PersonalizedOffer_Flight");
-
                 entity.HasOne(d => d.UserPerson)
                     .WithMany(p => p.Personalizedoffer)
                     .HasForeignKey(d => d.UserPersonId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("PersonalizedOffer_User");
             });
 
@@ -265,7 +249,6 @@ namespace IPB_Końcowy.Models
                 entity.Property(e => e.Birthdate).HasColumnType("date");
 
                 entity.Property(e => e.CreditCardNumber)
-                    .IsRequired()
                     .HasMaxLength(22)
                     .IsUnicode(false);
 

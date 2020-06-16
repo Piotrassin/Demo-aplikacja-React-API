@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 
 namespace IPB_Końcowy
 {
+    /// <summary>
+    ///  Scaffold-DbContext "server=database.n0izy.pl;port=3306;user=zdalny;password=!@#123qweASD;database=spacey" MySql.Data.EntityFrameworkCore -OutputDir Models -f
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
