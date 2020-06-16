@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 
-export default function LoginWorkerForm( { setLogin, loginWorker } ) {
+export default function LoginWorkerForm( { setLoginClient,  } ) {
 
     const history = useHistory();
     const triggerState = () => {
-        setLogin(false);
+        setLoginClient(false);
     }
 
     const [username, setUsername] = useState("");
@@ -16,7 +16,7 @@ export default function LoginWorkerForm( { setLogin, loginWorker } ) {
 
     const setUser = () => {
         if(username.length > 3 && password.length > 3 && !usernameError && !passwordError) {
-            history.push("/worker");
+            history.push("/user");
         }else{
             if(username.length < 3){
                 setUsernameError(true)
@@ -48,6 +48,7 @@ export default function LoginWorkerForm( { setLogin, loginWorker } ) {
 
     return (
         <div style={{ background: "#f0f0f0", padding: "2%", marginTop: "1%", width: "60%", }}>
+            <h4 align="left">Zaloguj jako klient</h4>
             <form onSubmit={ setUser }>
                 <div style={{ display: "flex"}}>
                     <div style={{ width: "100%"}}>

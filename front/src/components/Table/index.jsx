@@ -11,13 +11,10 @@ export default function Table() {
         Axios.get('http://localhost:59062/api/person').then(res => {setPersons(res.data)});
     });
 
-    const addUser = (user) => {
-        Axios.post('', user);
-    };
 
     return (
         <div>
-            <table style={{ color: "white"}}>
+            <table style={{ color: "black"}}>
                 <TableHeader
                     columnsNames={["User ID", "Imię", "Nazwisko", "Email", ""]}
                 />

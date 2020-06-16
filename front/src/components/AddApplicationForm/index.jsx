@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export default function AddApplicationForm( { setApplication, addApplication } ) {
+export default function AddApplicationForm( { setApplication, addApp } ) {
 
     const triggerState = () => {
         setApplication(false);
@@ -14,11 +14,11 @@ export default function AddApplicationForm( { setApplication, addApplication } )
 
     const setUser = () => {
 
-            addApplication({
+        addApp({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
-                username: username,
+                login: username,
                 password: password
             });
 
@@ -50,6 +50,7 @@ export default function AddApplicationForm( { setApplication, addApplication } )
 
     return (
         <div style={{ background: "#f0f0f0", padding: "2%", marginTop: "1%", width: "50%", align: "center"}}>
+            <h4>Formularz zapisu na lot kosmiczny!</h4>
             <form onSubmit={ setUser }>
                 <div style={{ display: "flex", flexDirection: "column"}}>
                     <div>

@@ -30,15 +30,12 @@ namespace IPB_Końcowy
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            services.AddCors(options =>
+            services.AddCors((o => o.AddPolicy("MyPolicy", builder =>
             {
-                options.AddDefaultPolicy(
-                                  builder =>
-                                  {
-                                      builder.WithOrigins("http://localhost:59062",
-                                                           "http://localhost:3000");
-                                  });
-            });
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            })));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +47,7 @@ namespace IPB_Końcowy
             }
 
 
-            app.UseCors();
+            app.UseCors("MyPolicy");
 
             app.UseRouting();
 

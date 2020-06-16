@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 
 export default function LoginWorkerForm( { setLogin, loginWorker } ) {
 
+    const history = useHistory();
     const triggerState = () => {
         setLogin(false);
     }
@@ -14,12 +16,7 @@ export default function LoginWorkerForm( { setLogin, loginWorker } ) {
 
     const setUser = () => {
         if(username.length > 3 && password.length > 3 && !usernameError && !passwordError) {
-            loginWorker({
-                username: username,
-                password: password
-            });
-
-            triggerState();
+            history.push("/worker");
         }else{
             if(username.length < 3){
                 setUsernameError(true)
@@ -50,7 +47,8 @@ export default function LoginWorkerForm( { setLogin, loginWorker } ) {
     }
 
     return (
-        <div style={{ background: "#f0f0f0", padding: "2%", marginTop: "1%", width: "50%", }}>
+        <div style={{ background: "#f0f0f0", padding: "2%", marginTop: "1%", width: "60%", }}>
+            <h4 align="left">Zaloguj jako pracownik</h4>
             <form onSubmit={ setUser }>
                 <div style={{ display: "flex"}}>
                     <div style={{ width: "100%"}}>

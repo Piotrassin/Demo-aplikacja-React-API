@@ -1,7 +1,7 @@
 import React from "react";
 
-const RequestListButton = props => {
-    return <button onClick={ props.addAplication } className="waves-effect waves-light btn btn-size">Zgłoszenia oczeukjące</button>
+const RequestOfferListButton = props => {
+    return <button onClick={ props.addAplication } className="waves-effect waves-light btn btn-size">Oczeukjące prośby o ofertę</button>
 }
 
-export default RequestListButton
+export default RequestOfferListButton

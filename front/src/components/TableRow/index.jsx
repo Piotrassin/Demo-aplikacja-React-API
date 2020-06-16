@@ -5,7 +5,7 @@ export default function TableRow({ person }) {
 
 
     return (
-        <tr style={{ color: "white" }} >
+        <tr style={{ color: "black" }} >
             <td>{person.id}</td>
             <td>{person.firstName}</td>
             <td>{person.lastName}</td>
