@@ -102,6 +102,12 @@ namespace IPB_Końcowy.Controllers
             return person;
         }
 
+        [HttpGet("credentials")]
+        public async Task<Boolean> CheckCredentials(string login, string password)
+        {
+            return await _context.Person.Where(x => x.Login == login && x.Password == password).AnyAsync();
+        }
+
         private bool PersonExists(int id)
         {
             return _context.Person.Any(e => e.Id == id);
