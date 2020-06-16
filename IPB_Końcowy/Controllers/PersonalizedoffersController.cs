@@ -24,7 +24,7 @@ namespace IPB_Końcowy.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Personalizedoffer>>> GetPersonalizedoffer()
         {
-            return await _context.Personalizedoffer.ToListAsync();
+            return await _context.Personalizedoffer.Include(p => p.UserPerson).ToListAsync();
         }
 
         // GET: api/Personalizedoffers/5
