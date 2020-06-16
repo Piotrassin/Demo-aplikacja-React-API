@@ -24,7 +24,7 @@ namespace IPB_Końcowy.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Person>>> GetPerson()
         {
-            return await _context.Person.ToListAsync();
+            return await _context.Person.Include(c => c.Consultant).Include(u => u.User).ToListAsync();
         }
 
         // GET: api/Person/5

@@ -24,7 +24,10 @@ namespace IPB_Końcowy.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Consultant>>> GetConsultant()
         {
-            return await _context.Consultant.ToListAsync();
+            /*return Ok(_context.Consultant.Join(_context.Person, c => c.PersonId, p => p.Id,
+                        (c, p) => new Consultant { PersonId = c.PersonId, Person = p}).ToList());*/
+
+            return Ok(_context.Consultant.Include(p => p.Person).ToList());
         }
 
         // GET: api/Consultants/5
