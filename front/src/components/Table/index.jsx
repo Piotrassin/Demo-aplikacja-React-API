@@ -1,47 +1,31 @@
 import React, { useEffect, useState } from "react";
 import TableHeader from "../TableHeader";
 import TableRow from "../TableRow";
-import AddForm from "../AddForm";
-import AddDriverButton from "../AddDriverButton";
 import Axios from "axios";
-
 
 export default function Table() {
 
-    const [users, setUsers] = useState([]);
-    const [tmpUsers, setTmpUsers] = useState([]);
-    const [empty, setEmpty] = useState(true);
-    const [add, setAdd] = useState(false);
+    const [persons, setPersons] = useState([]);
 
     useEffect(() => {
-        Axios.get('https://my-json-server.typicode.com/SimoneDiPlocki/demo/users').then(res => {setUsers(res.data)});
+        Axios.get('http://localhost:59062/api/person').then(res => {setPersons(res.data)});
     });
 
     const addUser = (user) => {
-        Axios.post('https://my-json-server.typicode.com/SimoneDiPlocki/demo/users', user)
-                .then(res => {setTmpUsers([...tmpUsers, res.data]); alert("Added temporarily to database")});
+        Axios.post('', user);
     };
-
-    const triggerState = () => {
-        setEmpty(false);
-        setAdd(true);
-    }
 
     return (
         <div>
-            <div>
-                {empty && <AddDriverButton addDriver={ triggerState }/>}
-                {add && <AddForm setAdd={ setAdd } setEmpty={ setEmpty } addUser={ addUser } users={ users } />}
-            </div>
-            <table>
+            <table style={{ color: "white"}}>
                 <TableHeader
-                    columnsNames={["User ID", "Name", "Username", "Email", ""]}
+                    columnsNames={["User ID", "Imię", "Nazwisko", "Email", ""]}
                 />
                 <tbody>
-                {[...users, ...tmpUsers].map((u) => (
+                {[...persons].map((p) => (
                     <TableRow
-                        key={u.id}
-                        user={u}
+                        key={p.id}
+                        person={p}
                     />
                 ))}
                 </tbody>
