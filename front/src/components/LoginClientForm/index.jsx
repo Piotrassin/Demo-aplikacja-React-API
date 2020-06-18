@@ -1,8 +1,11 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
+import Axios from "axios";
+import Cookies from 'universal-cookie';
 
 export default function LoginWorkerForm( { setLoginClient,  } ) {
 
+    const cookies = new Cookies();
     const history = useHistory();
     const triggerState = () => {
         setLoginClient(false);
@@ -15,17 +18,13 @@ export default function LoginWorkerForm( { setLoginClient,  } ) {
     const [passwordError, setPasswordError] = useState(false);
 
     const setUser = () => {
-        if(username.length > 3 && password.length > 3 && !usernameError && !passwordError) {
-            history.push("/user");
-        }else{
-            if(username.length < 3){
-                setUsernameError(true)
-            }
-            if(password.length < 3){
-                setPasswordError(true)
-            }
+                Axios.get('http://localhost:59062/api/person/credentials/'+username+'/'+password).then(res => {
+                    cookies.set('id', res.data, { path: '/' });
+                    history.push("/user")
+                }
+            ).catch(err => {setPasswordError(true)})
+
         }
-    }
 
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -57,7 +56,7 @@ export default function LoginWorkerForm( { setLoginClient,  } ) {
                     </div>
                     <div style={{ width: "100%"}}>
                         <input type="email" placeholder="Password" value={password} onChange={handlePassword}/>
-                        {passwordError && <span style={{ color: "red" }}>Błędny format hasła!</span>}
+                        {passwordError && <span style={{ color: "red" }}>Błędne hasło!</span>}
                     </div>
                 </div>
                 <div align="right">

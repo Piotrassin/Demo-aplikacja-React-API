@@ -1,16 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-export default function TableRow({ person }) {
+export default function TableRowOffer({ offer }) {
 
 
     return (
         <tr style={{ color: "black" }} >
-            <td>{person.id}</td>
-            <td>{person.firstName}</td>
-            <td>{person.lastName}</td>
-            <td>{person.email}</td>
-            <button type="button" className="btn green darken-4" style={{ marginTop: "3%" }} >Zaakceptuj</button>
+            <td>{offer.id}</td>
+            <td>{offer.price}</td>
+            <button type="button" className="btn green darken-4" style={{ marginTop: "2%" }} >Zaakceptuj</button>
         </tr>
     );
 }

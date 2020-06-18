@@ -27,6 +27,12 @@ namespace IPB_Końcowy.Controllers
             return await _context.Personalizedoffer.Include(p => p.UserPerson).ToListAsync();
         }
 
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<Personalizedoffer>>> GetPersonalizedofferForUser(int id)
+        {
+            return await _context.Personalizedoffer.Where(p => p.UserPersonId == id).Include(p => p.UserPerson).ToListAsync();
+        }
+
         // GET: api/Personalizedoffers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Personalizedoffer>> GetPersonalizedoffer(int id)

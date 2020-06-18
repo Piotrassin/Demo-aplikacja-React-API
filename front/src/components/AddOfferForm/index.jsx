@@ -12,11 +12,7 @@ export default function AddOfferForm( { setForm, addApp } ) {
 
     const setUser = () => {
 
-        addApp({
-                where: where,
-                money: money,
-                direction: direction,
-            });
+
 
             triggerState();
     }

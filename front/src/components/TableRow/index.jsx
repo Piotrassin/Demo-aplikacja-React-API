@@ -10,7 +10,7 @@ export default function TableRow({ person }) {
             <td>{person.firstName}</td>
             <td>{person.lastName}</td>
             <td>{person.email}</td>
-            <Link to={"/person/" + person.id}><button type="button" className="btn green darken-4" style={{ marginTop: "3%" }} >Zaakceptuj</button></Link>
+            <button type="button" className="btn green darken-4" style={{ marginTop: "3%" }} >Zaakceptuj</button>
         </tr>
     );
 }

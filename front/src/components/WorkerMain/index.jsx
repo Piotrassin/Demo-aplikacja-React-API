@@ -18,7 +18,6 @@ export default function WorkerMain() {
                 <h1>Panel pracownika</h1>
                 <div className="buttons">
                     <RequestListButton requestList={triggerStateRequest} />
-                    <RequestOfferListButton />
                 </div>
                 <br/>
                 {requestList &&
