@@ -28,21 +28,11 @@ export default function LoginWorkerForm( { setLoginClient,  } ) {
 
     const handleUsername = (e) => {
         setUsername(e.target.value);
-        if(e.target.value.length < 3){
-            setUsernameError(true);
-        }else{
-            setUsernameError(false);
-        }
     }
 
 
     const handlePassword = (e) => {
         setPassword(e.target.value);
-        if(e.target.value.length < 3){
-            setPasswordError(true);
-        }else{
-            setPasswordError(false);
-        }
     }
 
     return (
@@ -55,10 +45,11 @@ export default function LoginWorkerForm( { setLoginClient,  } ) {
                         {usernameError && <span style={{ color: "red" }}>Błędny format loginu</span>}
                     </div>
                     <div style={{ width: "100%"}}>
-                        <input type="email" placeholder="Password" value={password} onChange={handlePassword}/>
-                        {passwordError && <span style={{ color: "red" }}>Błędne hasło!</span>}
+                        <input type="password" placeholder="Password" value={password} onChange={handlePassword}/>
+
                     </div>
                 </div>
+                {passwordError && <span style={{ color: "red" }}>Bład logowania! Niepoprawne dane lub Twoje konto nie zostało jeszcze aktywowane</span>}
                 <div align="right">
                     <button type="button" style={{ marginRight: "1%" }} onClick={ setUser } className="btn">Zaloguj</button>
                     <button type="button" className="btn red darken-2" onClick={ triggerState } >Anuluj</button>

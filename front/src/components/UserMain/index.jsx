@@ -28,6 +28,7 @@ export default function UserMain() {
         setMyOfferList(true);
     }
 
+
     return (
         <>
             <div className="container" style={{color: "white"}}>
@@ -39,7 +40,7 @@ export default function UserMain() {
                     <MyOffersButton getList={triggerStateOfferList}/>
                 </div>
                 <br/>
-                {offerForm && <AddOfferForm setForm={setOfferForm}/>}
+                {offerForm && <AddOfferForm setForm={setOfferForm} userid={cookies.get('id')}/>}
                 {myOfferList &&
                 <div style={{color: 'black', padding: "10px", background: "white"}}>
                     <h4>Oferty</h4>

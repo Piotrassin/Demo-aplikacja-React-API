@@ -35,7 +35,7 @@ export default function App() {
     }
 
     const addApp = (app) => {
-        Axios.post('http://localhost:59062/api/person', app).then(r => console.log(r));
+        Axios.post('http://localhost:59062/api/person', app).then(r => Axios.post('http://localhost:59062/api/users', {PersonId: r.data.id}));
     }
 
 

@@ -24,7 +24,7 @@ namespace IPB_Końcowy.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Person>>> GetPerson()
         {
-            return await _context.Person.Include(c => c.Consultant).Include(u => u.User).ToListAsync();
+            return await _context.Person.Include(c => c.Consultant).Include(u => u.User).Where(x => x.CanLogin == 0).ToListAsync();
         }
 
 
@@ -40,6 +40,20 @@ namespace IPB_Końcowy.Controllers
             }
 
             return person;
+        }
+
+        [HttpGet("accept/{id}")]
+        public async Task<ActionResult<Person>> AcceptPerson(int id)
+        {
+            var user = _context.Person.Where(x => x.Id == id).FirstOrDefault();
+
+            if ( user != null )
+            {
+                user.CanLogin = 1;
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok(user.Id);
         }
 
         // PUT: api/Person/5
@@ -107,7 +121,7 @@ namespace IPB_Końcowy.Controllers
         {
             //return await _context.Person.Where(x => x.Login == login).ToListAsync();
 
-            var person = _context.Person.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
+            var person = _context.Person.Where(x => x.Login == login && x.Password == password && x.CanLogin == 1).FirstOrDefault();
 
             if (person == null)
             {
