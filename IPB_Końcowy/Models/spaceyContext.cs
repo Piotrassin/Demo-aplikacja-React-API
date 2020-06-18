@@ -153,6 +153,8 @@ namespace IPB_Końcowy.Models
 
                 entity.Property(e => e.Id).HasColumnType("int(11)");
 
+                entity.Property(e => e.CanLogin).HasColumnType("int(11)");
+
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(31)
@@ -187,6 +189,8 @@ namespace IPB_Końcowy.Models
                     .HasName("PersonalizedOffer_User");
 
                 entity.Property(e => e.Id).HasColumnType("int(11)");
+
+                entity.Property(e => e.Accepted).HasColumnType("int(11)");
 
                 entity.Property(e => e.Price).HasColumnType("decimal(8,2)");
 

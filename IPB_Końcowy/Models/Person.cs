@@ -11,6 +11,7 @@ namespace IPB_Końcowy.Models
         public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public int CanLogin { get; set; }
 
         public virtual Consultant Consultant { get; set; }
         public virtual User User { get; set; }
